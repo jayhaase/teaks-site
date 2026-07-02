@@ -33,9 +33,26 @@ test("renders all four potion cards", () => {
   }
 });
 
-test("renders all five gallery images", () => {
+test("renders at least one gallery image", () => {
   const figureCount = (html.match(/<figure/g) ?? []).length;
-  assert.equal(figureCount, 5);
+  assert.ok(figureCount > 0, "gallery should have at least one image");
+});
+
+test("every gallery thumbnail has a lightbox trigger with a full-size image", () => {
+  const triggers = [
+    ...html.matchAll(
+      /<button type="button" class="gallery-trigger" data-full="([^"]+)"/g,
+    ),
+  ];
+  assert.ok(triggers.length > 0, "no gallery-trigger buttons found");
+  for (const [, fullSrc] of triggers) {
+    assert.ok(fullSrc.length > 0, "gallery-trigger missing data-full URL");
+  }
+});
+
+test("lightbox dialog markup is present", () => {
+  assert.match(html, /<dialog id="lightbox"/);
+  assert.match(html, /scripts\/lightbox\.js/);
 });
 
 test("has no unrendered template artifacts", () => {

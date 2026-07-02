@@ -13,6 +13,14 @@ export default [
     },
   },
   {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+  {
     ignores: ["_site/**", "node_modules/**"],
   },
 ];

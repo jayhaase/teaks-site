@@ -42,8 +42,10 @@ layout: layout.njk
   </div>
   <div class="gallery-grid">
     {%- for img in section.data.images %}
-    <figure class="{% if loop.first %}gallery-feature{% endif %}{% if img.variant == 'accent' %} gallery-accent{% endif %}">
-      {% image img.src, img.alt, "(min-width: 700px) 30vw, 50vw" %}
+    <figure class="{% if img.variant == 'accent' %}gallery-accent{% endif %}">
+      <button type="button" class="gallery-trigger" data-full="{% imageUrl img.src %}" data-alt="{{ img.alt }}">
+        {% image img.src, img.alt, "(min-width: 700px) 30vw, 50vw", img.focal %}
+      </button>
     </figure>
     {%- endfor %}
   </div>

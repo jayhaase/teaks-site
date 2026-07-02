@@ -43,6 +43,13 @@ commit it.
 assets) for reference only — it's listed in `.eleventyignore` and never
 gets built or published. Don't wire it into the site.
 
+`scripts/` holds the site's one piece of client-side JS
+(`lightbox.js`, passthrough-copied like `styles/` and `images/`). It's a
+plain browser script (no bundler, no framework) — `eslint.config.js` has
+a separate block scoped to `scripts/**/*.js` with browser globals instead
+of the root config's Node globals. Keep any future client JS in this
+folder and pattern for the same reason.
+
 ## Content vs. code — don't blur this line
 
 - `content/sections/*.md` and `_data/site.json` are the editable content
@@ -84,6 +91,21 @@ gets built or published. Don't wire it into the site.
 - The `{% image %}` shortcode writes optimized files to
   `_site/images/optimized/` — source images live in `images/` at the repo
   root, referenced by filename only (no path prefix) from frontmatter/data.
+  It takes an optional 4th arg, `focal` (a CSS `object-position` value,
+  e.g. `"50% 20%"`), wired through as `style="--focal: ...;"` — CSS reads
+  it via `object-position: var(--focal, center)`. There's also an
+  `{% imageUrl src %}` shortcode that returns just the largest JPEG URL
+  (used by the gallery lightbox's full-size view) — it's called with the
+  _same_ `imageOptions` object as `{% image %}` on purpose, so it hits
+  eleventy-img's on-disk cache instead of reprocessing the file. If you
+  change one shortcode's image options, keep them in sync (or genuinely
+  want a different derivative) rather than letting them drift.
+- **The gallery grid is deliberately count-agnostic**
+  (`repeat(auto-fill, minmax(220px, 1fr))` + `aspect-ratio: 1` per cell) —
+  it used to be hand-tuned for exactly 5 photos with one spanning 2 rows,
+  which broke as soon as real content had 6. Don't reintroduce a
+  fixed-count layout here; the photo list is expected to keep
+  growing/shrinking as the site owner adds real photos.
 - All asset URLs (stylesheet, favicon, `{% image %}` output) are
   **relative, not root-absolute** (`styles/style.css`, not
   `/styles/style.css`). This is a GitHub Pages _project_ site, served

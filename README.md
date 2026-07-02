@@ -70,6 +70,30 @@ section:
 Images are automatically resized and converted to modern formats
 (AVIF/WebP) when the site builds — just use a normal JPG or PNG.
 
+Gallery photos automatically open in a full-screen lightbox when clicked,
+with previous/next arrows and keyboard arrow-key navigation — no setup
+needed, this works for any photo you add.
+
+### Fixing a badly-cropped gallery thumbnail
+
+Gallery photos are cropped to a square thumbnail, which can cut off the
+interesting part of a tall or oddly-framed photo. Add a `focal` field to
+that photo's entry in `03-gallery.md` to control which part stays in
+frame:
+
+```yaml
+images:
+  - src: half.jpg
+    alt: "Teak looking mischeivious"
+    focal: "50% 70%"
+```
+
+The value works like a "keep this point visible" anchor — `"50% 0%"` keeps
+the top of the photo in frame, `"50% 100%"` keeps the bottom, `"0% 50%"`
+keeps the left edge, and so on (it's the CSS `object-position` property,
+if you want the full syntax). Leave it off and the photo just crops from
+the center, which is fine for most shots.
+
 ### Adding a genuinely new section
 
 The four sections above each have their own layout (a `type` field in
@@ -123,6 +147,8 @@ pnpm run build     # build the site into _site/
 - [eleventy-img](https://www.11ty.dev/docs/plugins/image/) — responsive,
   optimized images (AVIF/WebP)
 - Plain CSS with custom properties — no build step, no framework
+- A small hand-written vanilla-JS lightbox (`scripts/lightbox.js`, no
+  dependencies) for the gallery, built on the native `<dialog>` element
 - ESLint, Stylelint, markdownlint, Prettier — linting and formatting
 - Node's built-in test runner, html-validate, axe-core, and linkinator —
   build, HTML, accessibility, and link checks

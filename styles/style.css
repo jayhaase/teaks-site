@@ -406,8 +406,7 @@ a {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  grid-auto-rows: 210px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 14px;
   max-width: var(--page-max-width);
   margin: 0 auto;
@@ -415,22 +414,120 @@ a {
 
 .gallery-grid figure {
   margin: 0;
+  aspect-ratio: 1;
   border: 1px solid var(--gallery-border, var(--divider));
   overflow: hidden;
+}
+
+.gallery-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.gallery-trigger:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
 }
 
 .gallery-grid img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.gallery-feature {
-  grid-row: span 2;
+  object-position: var(--focal, center);
 }
 
 .gallery-accent {
   --gallery-border: var(--border-mystery);
+}
+
+/* Lightbox */
+
+html.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox::backdrop {
+  background: rgb(0 0 0 / 85%);
+}
+
+.lightbox-image {
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 4px 30px rgb(0 0 0 / 50%);
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  border: 1px solid rgb(233 226 201 / 40%);
+  background: rgb(24 38 24 / 80%);
+  color: var(--cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close {
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  font-size: 18px;
+}
+
+.lightbox-prev {
+  left: 24px;
+}
+
+.lightbox-next {
+  right: 24px;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover,
+.lightbox-close:focus-visible,
+.lightbox-prev:focus-visible,
+.lightbox-next:focus-visible {
+  background: var(--gold);
+  color: var(--bg-deep);
 }
 
 /* Find Teak */
@@ -531,15 +628,6 @@ a {
   .potion-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .gallery-feature {
-    grid-row: span 1;
-    grid-column: span 2;
-  }
 }
 
 @media (width <= 520px) {
@@ -551,12 +639,7 @@ a {
     flex-direction: column;
   }
 
-  .potion-grid,
-  .gallery-grid {
+  .potion-grid {
     grid-template-columns: 1fr;
-  }
-
-  .gallery-feature {
-    grid-column: span 1;
   }
 }
