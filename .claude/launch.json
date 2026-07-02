@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "teaks-site-preview",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "serve", "--", "--port=8081"],
+      "port": 8081
+    }
+  ]
+}

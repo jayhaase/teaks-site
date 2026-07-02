@@ -3,46 +3,48 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.characterName }}</title>
+    <title>{{ site.characterName }}'s Apothecary</title>
     <meta name="description" content="{{ site.tagline }}">
     <meta property="og:title" content="{{ site.characterName }}">
     <meta property="og:description" content="{{ site.tagline }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ site.url }}">
-    <meta property="og:image" content="{{ site.url }}images/{{ site.portrait }}">
+    <meta property="og:image" content="{{ site.url }}images/{{ site.ogImage }}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="{{ site.url }}">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="hero">
-      {% image site.portrait, site.portraitAlt, "(min-width: 700px) 320px, 60vw" %}
-      <h1>{{ site.characterName }}</h1>
-      <p class="tagline">{{ site.tagline }}</p>
-      {%- if site.social.length %}
-        <ul class="social">
-          {%- for link in site.social %}
-          <li><a href="{{ link.url }}">{{ link.label }}</a></li>
-          {%- endfor %}
-        </ul>
-      {%- endif %}
-    </header>
+    <div class="page">
+      <div class="scroll-rod scroll-rod--top" aria-hidden="true"></div>
 
-    <nav class="section-nav" aria-label="Page sections">
-      <ul>
-        {%- for section in collections.sections %}
-        <li><a href="#section-{{ section.fileSlug }}">{{ section.data.title }}</a></li>
-        {%- endfor %}
-      </ul>
-    </nav>
+      <header class="hero">
+        <div class="hero-backdrop" aria-hidden="true"></div>
+        <div class="hero-content">
+          <div class="seal" aria-hidden="true">{{ site.characterName | first }}</div>
+          <p class="eyebrow">{{ site.eyebrow }}</p>
+          <h1>{{ site.characterName }}</h1>
+          <p class="hero-subhead">{{ site.heroSubhead }}</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="{{ site.heroPrimaryCta.href }}">{{ site.heroPrimaryCta.label }}</a>
+            <a class="btn btn-outline" href="{{ site.heroSecondaryCta.href }}">{{ site.heroSecondaryCta.label }}</a>
+          </div>
+        </div>
+      </header>
 
-    <main id="main">{{ content | safe }}</main>
+      <main id="main">{{ content | safe }}</main>
 
-    <footer>
-      <p>Built with <a href="https://www.11ty.dev/">Eleventy</a>.</p>
-    </footer>
+      <footer class="footer-band">
+        <p>{{ site.footerLine }}</p>
+      </footer>
+
+      <div class="scroll-rod scroll-rod--bottom" aria-hidden="true"></div>
+    </div>
   </body>
 </html>

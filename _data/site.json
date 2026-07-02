@@ -1,11 +1,18 @@
 {
   "url": "https://jayhaase.github.io/teaks-site/",
-  "characterName": "Sir Placeholder the Bold",
-  "tagline": "Knight-errant, terrible poet, worse dancer",
-  "portrait": "portrait.svg",
-  "portraitAlt": "Portrait of Sir Placeholder in full armor",
-  "social": [
-    { "label": "Instagram", "url": "https://instagram.com/example" },
-    { "label": "Email", "url": "mailto:example@example.com" }
-  ]
+  "characterName": "Teak",
+  "tagline": "A tree faery apothecary, brewing potions of sleep, courage, and fortune.",
+  "ogImage": "portrait.svg",
+  "eyebrow": "Herein Recorded, the Apothecary of",
+  "heroSubhead": "A tree faery, apprentice to a wandering alchemist, who doth brew potions of sleep, of courage, and of fortune — and, upon occasion, of consequence unknown.",
+  "heroPrimaryCta": {
+    "label": "Enter the Apothecary",
+    "href": "#section-02-menu"
+  },
+  "heroSecondaryCta": {
+    "label": "Seek Her at Faire",
+    "href": "#section-04-find-teak"
+  },
+  "email": "hello@teaksapothecary.faerie",
+  "footerLine": "Thus concludes this ledger · herein sealed by Teak, apprentice fae"
 }

@@ -2,18 +2,71 @@
 layout: layout.njk
 ---
 {%- for section in collections.sections %}
+<div class="divider" aria-hidden="true">
+  <span></span><i></i><span></span>
+</div>
 <section id="section-{{ section.fileSlug }}" class="section" aria-labelledby="section-{{ section.fileSlug }}-heading">
-  <h2 id="section-{{ section.fileSlug }}-heading">{{ section.data.title }}</h2>
-  {%- if section.data.images %}
+
+  {%- if section.data.type == "about" %}
+  <div class="about-grid">
+    <div class="about-image">
+      {% image section.data.image, section.data.imageAlt, "(min-width: 700px) 40vw, 100vw" %}
+    </div>
+    <div>
+      <p class="eyebrow">{{ section.data.eyebrow }}</p>
+      <h2 id="section-{{ section.fileSlug }}-heading">{{ section.data.title }}</h2>
+      {{ section.templateContent | safe }}
+    </div>
+  </div>
+
+  {%- elif section.data.type == "menu" %}
+  <div class="section-header">
+    <p class="eyebrow">{{ section.data.eyebrow }}</p>
+    <h2 id="section-{{ section.fileSlug }}-heading">{{ section.data.title }}</h2>
+  </div>
+  <div class="potion-grid">
+    {%- for potion in section.data.potions %}
+    <div class="potion-card potion-card--{{ potion.variant }}">
+      {% image potion.image, potion.imageAlt, "(min-width: 700px) 25vw, 50vw" %}
+      <h3>{{ potion.title }}</h3>
+      <p>{{ potion.description }}</p>
+    </div>
+    {%- endfor %}
+  </div>
+  <div class="disclaimer">{{ section.templateContent | safe }}</div>
+
+  {%- elif section.data.type == "gallery" %}
+  <div class="section-header">
+    <p class="eyebrow">{{ section.data.eyebrow }}</p>
+    <h2 id="section-{{ section.fileSlug }}-heading">{{ section.data.title }}</h2>
+  </div>
   <div class="gallery-grid">
     {%- for img in section.data.images %}
-    <figure>
-      {% image img.src, img.alt, "(min-width: 700px) 33vw, 100vw" %}
+    <figure class="{% if loop.first %}gallery-feature{% endif %}{% if img.variant == 'accent' %} gallery-accent{% endif %}">
+      {% image img.src, img.alt, "(min-width: 700px) 30vw, 50vw" %}
     </figure>
     {%- endfor %}
   </div>
-  {%- else %}
-  {{ section.templateContent | safe }}
+
+  {%- elif section.data.type == "find-teak" %}
+  <div class="find-teak-grid">
+    <div>
+      <p class="eyebrow">{{ section.data.eyebrow }}</p>
+      <h2 id="section-{{ section.fileSlug }}-heading">{{ section.data.title }}</h2>
+      <ul class="faire-list">
+        {%- for faire in section.data.faires %}
+        <li><span>{{ faire.date }}</span><span>{{ faire.name }}</span></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">{{ section.data.contactEyebrow }}</p>
+      <h2>{{ section.data.contactTitle }}</h2>
+      {{ section.templateContent | safe }}
+      <a class="btn btn-primary" href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </div>
+  </div>
   {%- endif %}
+
 </section>
 {%- endfor %}

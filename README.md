@@ -1,61 +1,83 @@
 # teaks-site
 
-A one-page character site, built with [Eleventy](https://www.11ty.dev/) and
-deployed automatically to GitHub Pages. Content lives in plain Markdown and
-JSON files, separate from the page design, so it can be edited safely
-without touching any code.
+A one-page site for Teak, a tree-faery apprentice apothecary, built with
+[Eleventy](https://www.11ty.dev/) and deployed automatically to GitHub
+Pages. Content lives in plain Markdown and JSON files, separate from the
+page design, so it can be edited safely without touching any code.
 
 ## Editing content
 
 Everything you'd normally want to change lives in `content/` or `_data/`.
 You never need to touch the other folders.
 
-### Edit existing text
+The page has four sections, each its own file in `content/sections/`:
 
-Open any file in `content/sections/` — each one is a section of the page,
-written in [Markdown](https://www.markdownguide.org/basic-syntax/):
+- `01-about.md` — Teak's bio ("Of Curious Craft")
+- `02-menu.md` — the potion cards ("The Potion Ledger")
+- `03-gallery.md` — the photo gallery
+- `04-find-teak.md` — faire dates and the contact blurb
 
-- `01-intro.md` — the introduction
-- `02-backstory.md` — backstory
-- `03-skills.md` — skills & talents
-- `04-gallery.md` — photo gallery
+Each file has a `---`-delimited **frontmatter** block at the top (structured
+fields like titles, image filenames, and lists) and regular
+[Markdown](https://www.markdownguide.org/basic-syntax/) text below it.
 
-Just edit the text below the `---` line at the top of the file. Leave the
-`---` block (the **frontmatter**) alone unless you're changing the section
-title or its order on the page.
+### Edit body text
 
-### Add a new section
+Just edit the prose below the `---` block — e.g. Teak's bio in
+`01-about.md`, the disclaimer in `02-menu.md`, or the contact blurb in
+`04-find-teak.md`.
 
-Copy one of the existing files in `content/sections/` and rename it, e.g.
-`05-allies.md`. Set `title` and `order` in its frontmatter (order controls
-where it appears — sections are sorted lowest to highest), then write your
-content below. No other file needs to change — it'll show up on the page
-and in the navigation automatically.
+### Edit a list (potions, gallery photos, faire dates)
 
-### Change the name, tagline, or social links
+These live in the frontmatter as YAML lists. To add a fourth faire date,
+copy one of the existing entries in `04-find-teak.md` and edit it:
 
-Edit `_data/site.json`. It's a simple list of fields:
+```yaml
+faires:
+  - date: "Aug 15–16"
+    name: Willowmere Renaissance Faire
+```
+
+Same pattern for potions in `02-menu.md` (`title`, `description`, `image`)
+and photos in `03-gallery.md` (`src`, `alt`). Keep the indentation exactly
+as-is — YAML is picky about it, and a misaligned line will fail the build
+check on your PR rather than break the live site (see below).
+
+### Change the hero text, email, or footer line
+
+Edit `_data/site.json` — sitewide fields that aren't part of any one
+section:
 
 ```json
 {
-  "characterName": "Sir Placeholder the Bold",
-  "tagline": "Knight-errant, terrible poet, worse dancer",
-  "portrait": "portrait.svg",
-  "portraitAlt": "Portrait of Sir Placeholder in full armor",
-  "social": [{ "label": "Instagram", "url": "https://instagram.com/example" }]
+  "characterName": "Teak",
+  "eyebrow": "Herein Recorded, the Apothecary of",
+  "heroSubhead": "A tree faery, apprentice to a wandering alchemist...",
+  "email": "hello@teaksapothecary.faerie",
+  "footerLine": "Thus concludes this ledger · herein sealed by Teak, apprentice fae"
 }
 ```
 
 ### Add or change photos
 
 1. Drop the image file into `images/`.
-2. Reference it by filename from `_data/site.json` (for the portrait) or
-   from the `images:` list in `content/sections/04-gallery.md` (for the
-   gallery). Always include a short `alt` description — it's read aloud by
-   screen readers and shown if the image fails to load.
+2. Reference it by filename in the relevant frontmatter — `image` in
+   `01-about.md` or a potion entry in `02-menu.md`, `src` in a gallery
+   entry in `03-gallery.md`. Always include a short `alt`/`imageAlt`
+   description — it's read aloud by screen readers and shown if the image
+   fails to load.
 
 Images are automatically resized and converted to modern formats
 (AVIF/WebP) when the site builds — just use a normal JPG or PNG.
+
+### Adding a genuinely new section
+
+The four sections above each have their own layout (a `type` field in
+frontmatter picks which one). Reordering, editing, or adding/removing list
+items _within_ an existing section is safe to do as content. Adding a
+**new kind** of section — a fifth chapter with a layout none of the four
+already have — needs a developer to add a template branch in `index.njk`,
+not just a new content file.
 
 ## How publishing works
 
