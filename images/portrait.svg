@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#3b2f2f"/>
+  <circle cx="400" cy="380" r="180" fill="#caa472"/>
+  <rect x="220" y="560" width="360" height="380" rx="40" fill="#5c4433"/>
+  <text x="400" y="960" font-family="Georgia, serif" font-size="36" fill="#f4e9d8" text-anchor="middle">Replace with a real portrait</text>
+</svg>

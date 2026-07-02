@@ -1,0 +1,10 @@
+{
+  "characterName": "Sir Placeholder the Bold",
+  "tagline": "Knight-errant, terrible poet, worse dancer",
+  "portrait": "portrait.svg",
+  "portraitAlt": "Portrait of Sir Placeholder in full armor",
+  "social": [
+    { "label": "Instagram", "url": "https://instagram.com/example" },
+    { "label": "Email", "url": "mailto:example@example.com" }
+  ]
+}

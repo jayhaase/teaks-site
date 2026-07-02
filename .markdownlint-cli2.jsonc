@@ -1,0 +1,10 @@
+{
+  // MD013 (line length) and MD041 (must start with an H1) are disabled
+  // because content/sections/*.md files are hand-written prose without a
+  // heading — the title comes from frontmatter instead.
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD041": false,
+  },
+}
