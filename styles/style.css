@@ -27,6 +27,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
 body {
   margin: 0;
   background: var(--bg-deep);
@@ -60,6 +65,65 @@ a {
 
 .page {
   background: var(--bg-deep);
+}
+
+/* Site nav */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--divider);
+  box-shadow: 0 4px 18px rgb(0 0 0 / 12%);
+}
+
+.site-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 20px var(--section-padding-x);
+}
+
+.site-nav-logo {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--cream);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.site-nav-links {
+  display: flex;
+  gap: 38px;
+  overflow-x: auto;
+}
+
+.site-nav-links a {
+  font: 600 13px / 1 var(--font-heading);
+  letter-spacing: 0.12em;
+  color: var(--sage-3);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav-links a:hover,
+.site-nav-links a:focus-visible {
+  color: var(--cream);
+}
+
+.site-nav-links a.site-nav-accent {
+  color: var(--gold);
+}
+
+.site-nav-links a.site-nav-accent:hover,
+.site-nav-links a.site-nav-accent:focus-visible {
+  color: var(--gold-darker);
 }
 
 .scroll-rod {
@@ -432,6 +496,14 @@ a {
 @media (width <= 900px) {
   :root {
     --section-padding-x: 24px;
+  }
+
+  .site-nav-inner {
+    gap: 16px;
+  }
+
+  .site-nav-links {
+    gap: 20px;
   }
 
   .hero {

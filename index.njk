@@ -50,7 +50,7 @@ layout: layout.njk
 
   {%- elif section.data.type == "find-teak" %}
   <div class="find-teak-grid">
-    <div>
+    <div id="faires">
       <p class="eyebrow">{{ section.data.eyebrow }}</p>
       <h2 id="section-{{ section.fileSlug }}-heading">{{ section.data.title }}</h2>
       <ul class="faire-list">
@@ -59,7 +59,7 @@ layout: layout.njk
         {%- endfor %}
       </ul>
     </div>
-    <div>
+    <div id="contact">
       <p class="eyebrow">{{ section.data.contactEyebrow }}</p>
       <h2>{{ section.data.contactTitle }}</h2>
       {{ section.templateContent | safe }}
