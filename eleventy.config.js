@@ -21,7 +21,7 @@ export default async function (eleventyConfig) {
         widths: [400, 800, 1200],
         formats: ["avif", "webp", "jpeg"],
         outputDir: "./_site/images/optimized/",
-        urlPath: "/images/optimized/",
+        urlPath: "images/optimized/",
       });
       return Image.generateHTML(metadata, {
         alt,

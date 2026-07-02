@@ -8,10 +8,12 @@
     <meta property="og:title" content="{{ site.characterName }}">
     <meta property="og:description" content="{{ site.tagline }}">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="/images/{{ site.portrait }}">
+    <meta property="og:url" content="{{ site.url }}">
+    <meta property="og:image" content="{{ site.url }}images/{{ site.portrait }}">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="canonical" href="{{ site.url }}">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
