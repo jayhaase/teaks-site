@@ -4,7 +4,7 @@ title: Of Curious Craft
 order: 1
 eyebrow: "Chapter I · Her Tale"
 image: hero.jpg
-imageAlt: "Illuminated portrait of Teak among the roots"
+imageAlt: "Smiling Teak sitting in a chair holding some paper"
 ---
 
 Well met, traveler! I am Teak, apprenticed to a master alchemist of no small
