@@ -20,7 +20,7 @@
     "format:check": "prettier --check .",
     "test:unit": "node --test \"test/**/*.test.js\"",
     "test:html": "html-validate \"_site/**/*.html\"",
-    "test:links": "linkinator ./_site --recurse --silent",
+    "test:links": "linkinator ./_site --recurse --silent --retry --status-code 429:warn",
     "test:a11y": "node test/a11y.check.mjs",
     "test": "pnpm run build && pnpm run test:unit && pnpm run test:html && pnpm run test:a11y && pnpm run test:links",
     "validate": "pnpm run lint && pnpm run test"
