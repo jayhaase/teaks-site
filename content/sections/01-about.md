@@ -3,7 +3,7 @@ type: about
 title: Of Curious Craft
 order: 1
 eyebrow: "Chapter I · Her Tale"
-image: portrait.svg
+image: hero.jpg
 imageAlt: "Illuminated portrait of Teak among the roots"
 ---
 
