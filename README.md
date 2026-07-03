@@ -83,12 +83,12 @@ Gallery photos automatically open in a full-screen lightbox when clicked,
 with previous/next arrows and keyboard arrow-key navigation — no setup
 needed, this works for any photo you add.
 
-### Fixing a badly-cropped gallery thumbnail
+### Fixing a badly-cropped photo
 
-Gallery photos are cropped to a square thumbnail, which can cut off the
-interesting part of a tall or oddly-framed photo. Add a `focal` field to
-that photo's entry in `03-gallery.md` to control which part stays in
-frame:
+Gallery photos are cropped to a square thumbnail, and potion photos to a
+tall rectangle, which can cut off the interesting part of an oddly-framed
+shot. Add a `focal` field to that photo's entry in `03-gallery.md` (or a
+potion's entry in `02-menu.md`) to control which part stays in frame:
 
 ```yaml
 images:
