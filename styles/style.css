@@ -544,17 +544,17 @@ a {
   border-color: var(--gold);
 }
 
-.potion-card--mystery {
+.potion-card--mischief {
   border-color: var(--border-mystery);
   background: var(--bg-mystery);
 }
 
-.potion-card--mystery p {
+.potion-card--mischief p {
   color: #d3bce6;
 }
 
-.potion-grid .potion-card--mystery:hover,
-.potion-grid .potion-card--mystery:focus-visible {
+.potion-grid .potion-card--mischief:hover,
+.potion-grid .potion-card--mischief:focus-visible {
   transform: rotate(2deg) translateY(-8px) scale(1.03);
   border-color: #cfa9e6;
 }

@@ -4,11 +4,11 @@ title: The Potion Ledger
 order: 2
 eyebrow: "Chapter II · Her Wares"
 potions:
-  - variant: sleep
-    image: potion-sleep.svg
-    imageAlt: "A vial of Sweet Slumber"
-    title: Sweet Slumber
-    description: For nights unquiet. Mostly chamomile.
+  - variant: dreamcatcher
+    image: potion-dreamcatcher.svg
+    imageAlt: "A vial of Dreamcatcher's Draught"
+    title: Dreamcatcher's Draught
+    description: For the littles who fear what waits in the dark. Chases nightmares off till dawn.
   - variant: courage
     image: potion-courage.svg
     imageAlt: "A vial of Lionheart Draught"
@@ -19,11 +19,11 @@ potions:
     imageAlt: "A vial of Fortune's Favor"
     title: Fortune's Favor
     description: A shimmer of luck, sealed by wax and wish.
-  - variant: mystery
-    image: potion-mystery.svg
-    imageAlt: "A vial of Unlabeled Brew"
-    title: Unlabeled Brew
-    description: Its purpose is unrecorded. Drink at thine own delight.
+  - variant: mischief
+    image: potion-mischief.svg
+    imageAlt: "A vial of Mischief Brew"
+    title: Mischief Brew
+    description: Effects unpredictable by design. Frogs not guaranteed — but not ruled out.
     revealDescription: "Tonight's batch: fizzy, faintly green, and smells suspiciously like victory. Or pond water. Hard to say."
     hint: "— tap for batch notes —"
     revealHint: "— tap to reseal —"

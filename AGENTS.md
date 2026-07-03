@@ -151,7 +151,7 @@ folder and pattern for the same reason.
   `styles/style.css` aggressively — if a CSS fix doesn't seem to take
   effect after editing + rebuilding, hard-reload with a cache-busting query
   string before concluding the fix is wrong.
-- `role="button"` on a `<div>` (used for the mystery potion card) trips
+- `role="button"` on a `<div>` (used for reveal-enabled potion cards) trips
   html-validate's `prefer-native-element` rule, but a real `<button>`
   can't legally contain block content like `<h3>`/`<p>` per the HTML5
   content model (`element-permitted-content`) — the two rules directly

@@ -24,10 +24,10 @@ test("renders every content section", () => {
 
 test("renders all four potion cards", () => {
   for (const title of [
-    "Sweet Slumber",
+    "Dreamcatcher's Draught",
     "Lionheart Draught",
     "Fortune's Favor",
-    "Unlabeled Brew",
+    "Mischief Brew",
   ]) {
     assert.ok(html.includes(title), `missing potion card: ${title}`);
   }

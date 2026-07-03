@@ -44,7 +44,7 @@ as-is — YAML is picky about it, and a misaligned line will fail the build
 check on your PR rather than break the live site (see below).
 
 Any potion can also get a "click to reveal" flourish (currently on the
-Unlabeled Brew) by adding three optional fields: `revealDescription` (the
+Mischief Brew) by adding three optional fields: `revealDescription` (the
 text shown after a click), `hint` (a small italic prompt under the normal
 description), and `revealHint` (the prompt shown after a click). Leave all
 three off for a potion that's just a normal card.
