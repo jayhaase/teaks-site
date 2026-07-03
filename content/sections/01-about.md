@@ -8,7 +8,7 @@ imageAlt: "Smiling Teak sitting in a chair holding some paper"
 ---
 
 Well met, traveler! I am Teak, apprenticed to a master alchemist of no small
-renown — though she is rarely found, for she prefers to journey quite
+renown. Though she is rarely found, for she prefers to journey quite
 alone. In her absence, the workshop and its cauldron fall to me.
 
 I am, at heart, a scientist. I mix, I measure, I bottle what results.
