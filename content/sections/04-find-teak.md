@@ -6,12 +6,12 @@ eyebrow: "Chapter IV · Her Wanderings"
 contactEyebrow: "Chapter V · Correspondence"
 contactTitle: Send Word
 faires:
-  - date: "Aug 15–16"
-    name: Willowmere Renaissance Faire
-  - date: "Sep 5–7"
-    name: Thornwood Autumn Revel
-  - date: "Oct 18–19"
-    name: Hollow Lantern Festival
+  - date: "Aug 22 – Oct 4"
+    name: Minnesota Renaissance Festival
+    url: "https://renaissancefest.com/"
+  - date: "Nov 6–8"
+    name: Fables & Flames
+    url: "https://fablesandflames.com/"
 ---
 
 Wish for a potion of your own commission? Send a letter by raven, or,

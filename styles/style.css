@@ -48,6 +48,15 @@ a {
   color: inherit;
 }
 
+.faire-link {
+  text-decoration-color: var(--divider);
+}
+
+.faire-link:hover,
+.faire-link:focus-visible {
+  color: var(--gold);
+}
+
 .skip-link {
   position: absolute;
   left: -999px;

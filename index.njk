@@ -64,7 +64,7 @@ layout: layout.njk
       <h2 id="section-{{ section.fileSlug }}-heading">{{ section.data.title }}</h2>
       <ul class="faire-list">
         {%- for faire in section.data.faires %}
-        <li><span>{{ faire.date }}</span><span>{{ faire.name }}</span></li>
+        <li><span>{{ faire.date }}</span><span>{% if faire.url %}<a class="faire-link" href="{{ faire.url }}" target="_blank" rel="noopener noreferrer">{{ faire.name }}</a>{% else %}{{ faire.name }}{% endif %}</span></li>
         {%- endfor %}
       </ul>
     </div>

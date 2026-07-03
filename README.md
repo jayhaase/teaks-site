@@ -34,9 +34,12 @@ copy one of the existing entries in `04-find-teak.md` and edit it:
 
 ```yaml
 faires:
-  - date: "Aug 15–16"
-    name: Willowmere Renaissance Faire
+  - date: "Aug 22 – Oct 4"
+    name: Minnesota Renaissance Festival
+    url: "https://renaissancefest.com/"
 ```
+
+`url` is optional — add it to link the faire name to its website (opens in a new tab), or leave it off for plain text.
 
 Same pattern for potions in `02-menu.md` (`title`, `description`, `image`)
 and photos in `03-gallery.md` (`src`, `alt`). Keep the indentation exactly
