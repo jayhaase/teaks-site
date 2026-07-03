@@ -123,6 +123,18 @@ folder and pattern for the same reason.
   CSS custom-property indirection (`border-color: var(--x, var(--fallback))`,
   then set `--x` on the modifier class) to sidestep specificity fights
   entirely — see `.gallery-accent` in `styles/style.css` for the pattern.
+- **A plain `1fr` grid track has an implicit `min-width: auto`**, sized to
+  its content's min-content — not 0. One long unbreakable string (a faire
+  name, an email address) inside a narrow single-column grid is enough to
+  blow the whole grid past its container and cause page-wide horizontal
+  scroll on mobile, even though the grid's own box is sized correctly.
+  Every `grid-template-columns` in `styles/style.css` uses `minmax(0, 1fr)`
+  instead of bare `1fr` for this reason — keep that pattern in any new
+  grid. Verify with `document.documentElement.scrollWidth` vs
+  `clientWidth` at a narrow viewport (should be equal) rather than trusting
+  a visual check, since a few px of overflow is easy to miss by eye.
+  Long unbreakable button/link text (e.g. an email address) needs its own
+  fix — `.btn` has `overflow-wrap: anywhere` for this.
 
 ## CI/CD — don't weaken the safety gate
 

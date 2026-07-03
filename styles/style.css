@@ -256,6 +256,8 @@ a {
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .btn-primary {
@@ -329,7 +331,7 @@ a {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
   gap: 60px;
   align-items: center;
   max-width: var(--page-max-width);
@@ -344,7 +346,7 @@ a {
 
 .potion-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
   max-width: var(--page-max-width);
   margin: 0 auto;
@@ -534,7 +536,7 @@ html.lightbox-open {
 
 .find-teak-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 60px;
   max-width: var(--page-max-width);
   margin: 0 auto;
@@ -601,6 +603,8 @@ html.lightbox-open {
 
   .site-nav-links {
     gap: 20px;
+    min-width: 0;
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
   }
 
   .hero {
@@ -621,12 +625,12 @@ html.lightbox-open {
 
   .about-grid,
   .find-teak-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 32px;
   }
 
   .potion-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -640,6 +644,6 @@ html.lightbox-open {
   }
 
   .potion-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
