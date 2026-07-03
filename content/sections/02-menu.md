@@ -5,22 +5,22 @@ order: 2
 eyebrow: "Chapter II · Her Wares"
 potions:
   - variant: dreamcatcher
-    image: potion-dreamcatcher.svg
+    image: dream-catcher-potion.jpg
     imageAlt: "A vial of Dreamcatcher's Draught"
     title: Dreamcatcher's Draught
     description: For the littles who fear what waits in the dark. Chases nightmares off till dawn.
   - variant: courage
-    image: potion-courage.svg
+    image: courage-potion.jpg
     imageAlt: "A vial of Lionheart Draught"
     title: Lionheart Draught
     description: Bottled valor, for quests great and small.
   - variant: luck
-    image: potion-luck.svg
+    image: luck-potion.jpg
     imageAlt: "A vial of Fortune's Favor"
     title: Fortune's Favor
     description: A shimmer of luck, sealed by wax and wish.
   - variant: mischief
-    image: potion-mischief.svg
+    image: mischief-potion.jpg
     imageAlt: "A vial of Mischief Brew"
     title: Mischief Brew
     description: Effects unpredictable by design. Frogs not guaranteed — but not ruled out.

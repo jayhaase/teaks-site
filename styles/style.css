@@ -597,6 +597,17 @@ a {
   aspect-ratio: 1;
   border: 1px solid var(--gallery-border, var(--divider));
   overflow: hidden;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gallery-grid figure:hover,
+.gallery-grid figure:focus-within {
+  border-color: var(--gallery-hover-border, var(--gold));
+  box-shadow: 0 10px 22px rgb(0 0 0 / 35%);
+  transform: translateY(-6px);
 }
 
 .gallery-trigger {
@@ -619,10 +630,22 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: var(--focal, center);
+  transition: transform 0.35s ease;
+}
+
+.gallery-grid figure:nth-child(odd):hover img,
+.gallery-grid figure:nth-child(odd):focus-within img {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+.gallery-grid figure:nth-child(even):hover img,
+.gallery-grid figure:nth-child(even):focus-within img {
+  transform: scale(1.08) rotate(2deg);
 }
 
 .gallery-accent {
   --gallery-border: var(--border-mystery);
+  --gallery-hover-border: #cfa9e6;
 }
 
 /* Lightbox */
