@@ -419,6 +419,11 @@ a {
   flex-shrink: 0;
 }
 
+.divider--stacked-only {
+  display: none;
+  padding: 0;
+}
+
 /* Sections */
 
 .section {
@@ -791,6 +796,10 @@ html.lightbox-open {
   .find-teak-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;
+  }
+
+  .divider--stacked-only {
+    display: flex;
   }
 
   .potion-grid {
