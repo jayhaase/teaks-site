@@ -95,6 +95,12 @@ a {
   color: var(--cream);
   text-decoration: none;
   flex-shrink: 0;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.site-nav-logo:hover {
+  transform: rotate(-6deg) scale(1.08);
 }
 
 .site-nav-links {
@@ -180,6 +186,96 @@ a {
   );
 }
 
+/* Sparkles */
+
+@keyframes sparkle-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(20deg);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  background: url("../images/mischief/sparkle.svg") no-repeat center / contain;
+  animation: sparkle-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.sparkle-1 {
+  top: 6%;
+  left: 12%;
+  width: 16px;
+  height: 16px;
+  animation-delay: 0s;
+}
+
+.sparkle-2 {
+  top: 12%;
+  right: 14%;
+  width: 12px;
+  height: 12px;
+  animation-delay: 1s;
+}
+
+.sparkle-3 {
+  top: 48%;
+  left: 6%;
+  width: 14px;
+  height: 14px;
+  animation-delay: 2s;
+}
+
+/* Toadstool/frog doodle toggle */
+
+@keyframes doodle-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+}
+
+.doodle-toggle {
+  position: absolute;
+  width: 40px;
+  height: auto;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  animation: doodle-bob 4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.doodle-toggle--hero {
+  top: 20px;
+  right: 20px;
+}
+
+.doodle-toggle--gallery {
+  top: -8px;
+  right: 16%;
+}
+
+.doodle-toggle img {
+  width: 100%;
+  display: block;
+}
+
+.doodle-toggle img[hidden] {
+  display: none;
+}
+
 .hero-content {
   position: relative;
   max-width: 760px;
@@ -204,6 +300,11 @@ a {
   font-weight: 900;
   color: var(--bg-deep);
   font-size: 22px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.seal:hover {
+  transform: rotate(18deg) scale(1.12);
 }
 
 .eyebrow {
@@ -258,6 +359,19 @@ a {
   display: inline-block;
   max-width: 100%;
   overflow-wrap: anywhere;
+  cursor: pointer;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s,
+    background 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: rotate(-1.5deg) scale(1.05);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 35%);
 }
 
 .btn-primary {
@@ -277,6 +391,7 @@ a {
 
 .btn-outline:hover,
 .btn-outline:focus-visible {
+  transform: rotate(1.5deg) scale(1.05);
   border-color: #e9e2c9;
   color: #fff;
 }
@@ -319,6 +434,7 @@ a {
 }
 
 .section-header {
+  position: relative;
   text-align: center;
   margin-bottom: 56px;
 }
@@ -353,9 +469,24 @@ a {
 }
 
 .potion-card {
+  display: block;
+  width: 100%;
   border: 1px solid var(--divider);
   padding: 28px 22px;
   background: var(--bg-panel);
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s,
+    border-color 0.25s;
+}
+
+.potion-card[role="button"]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .potion-card img {
@@ -381,6 +512,28 @@ a {
   margin: 0;
 }
 
+.potion-hint {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+.potion-card:nth-child(odd):hover,
+.potion-card:nth-child(odd):focus-visible {
+  transform: rotate(-1.5deg) translateY(-8px);
+  box-shadow: 0 14px 24px rgb(0 0 0 / 35%);
+  border-color: var(--gold);
+}
+
+.potion-card:nth-child(even):hover,
+.potion-card:nth-child(even):focus-visible {
+  transform: rotate(1.5deg) translateY(-8px);
+  box-shadow: 0 14px 24px rgb(0 0 0 / 35%);
+  border-color: var(--gold);
+}
+
 .potion-card--mystery {
   border-color: var(--border-mystery);
   background: var(--bg-mystery);
@@ -388,6 +541,12 @@ a {
 
 .potion-card--mystery p {
   color: #d3bce6;
+}
+
+.potion-grid .potion-card--mystery:hover,
+.potion-grid .potion-card--mystery:focus-visible {
+  transform: rotate(2deg) translateY(-8px) scale(1.03);
+  border-color: #cfa9e6;
 }
 
 .disclaimer {
@@ -576,6 +735,7 @@ html.lightbox-open {
   font-size: 14px;
   color: var(--muted);
   margin: 0;
+  transition: color 0.25s;
 }
 
 .section p {
@@ -588,6 +748,10 @@ html.lightbox-open {
 
 .section p:last-child {
   margin-bottom: 0;
+}
+
+.footer-band p:hover {
+  color: #cfa9e6;
 }
 
 /* Responsive fallback — the handoff was a fixed 1280px desktop mock */
@@ -645,5 +809,21 @@ html.lightbox-open {
 
   .potion-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle,
+  .doodle-toggle {
+    animation: none;
+  }
+
+  .btn,
+  .btn-outline,
+  .potion-card,
+  .seal,
+  .site-nav-logo,
+  .footer-band p {
+    transition: none;
   }
 }

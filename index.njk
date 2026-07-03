@@ -26,10 +26,13 @@ layout: layout.njk
   </div>
   <div class="potion-grid">
     {%- for potion in section.data.potions %}
-    <div class="potion-card potion-card--{{ potion.variant }}">
+    <div class="potion-card potion-card--{{ potion.variant }}"{% if potion.revealDescription %} role="button" tabindex="0" data-description="{{ potion.description }}" data-reveal-description="{{ potion.revealDescription }}" data-hint="{{ potion.hint }}" data-reveal-hint="{{ potion.revealHint }}"{% endif %}>
       {% image potion.image, potion.imageAlt, "(min-width: 700px) 25vw, 50vw" %}
       <h3>{{ potion.title }}</h3>
-      <p>{{ potion.description }}</p>
+      <p class="potion-description">{{ potion.description }}</p>
+      {%- if potion.hint %}
+      <p class="potion-hint">{{ potion.hint }}</p>
+      {%- endif %}
     </div>
     {%- endfor %}
   </div>
@@ -37,6 +40,10 @@ layout: layout.njk
 
   {%- elif section.data.type == "gallery" %}
   <div class="section-header">
+    <button type="button" class="doodle-toggle doodle-toggle--gallery" aria-label="Tap the toadstool">
+      <img src="images/mischief/toadstool.svg" class="doodle-mushroom" alt="">
+      <img src="images/mischief/frog.svg" class="doodle-frog" alt="" hidden>
+    </button>
     <p class="eyebrow">{{ section.data.eyebrow }}</p>
     <h2 id="section-{{ section.fileSlug }}-heading">{{ section.data.title }}</h2>
   </div>

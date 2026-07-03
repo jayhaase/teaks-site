@@ -24,6 +24,9 @@ potions:
     imageAlt: "A vial of Unlabeled Brew"
     title: Unlabeled Brew
     description: Its purpose is unrecorded. Drink at thine own delight.
+    revealDescription: "Tonight's batch: fizzy, faintly green, and smells suspiciously like victory. Or pond water. Hard to say."
+    hint: "— tap to peek at tonight's batch notes —"
+    revealHint: "— tap to reseal the mystery —"
 ---
 
 _Effects may include vivid dreaming, fits of laughter, or a brief tenure as

@@ -39,6 +39,13 @@
 
       <header class="hero">
         <div class="hero-backdrop" aria-hidden="true"></div>
+        <div class="sparkle sparkle-1" aria-hidden="true"></div>
+        <div class="sparkle sparkle-2" aria-hidden="true"></div>
+        <div class="sparkle sparkle-3" aria-hidden="true"></div>
+        <button type="button" class="doodle-toggle doodle-toggle--hero" aria-label="Tap the toadstool">
+          <img src="images/mischief/toadstool.svg" class="doodle-mushroom" alt="">
+          <img src="images/mischief/frog.svg" class="doodle-frog" alt="" hidden>
+        </button>
         <div class="hero-content">
           <div class="seal" aria-hidden="true">{{ site.characterName | first }}</div>
           <p class="eyebrow">{{ site.eyebrow }}</p>
@@ -54,7 +61,7 @@
       <main id="main">{{ content | safe }}</main>
 
       <footer class="footer-band">
-        <p>{{ site.footerLine }}</p>
+        <p>{{ site.footerLine | safe }}</p>
       </footer>
 
       <div class="scroll-rod scroll-rod--bottom" aria-hidden="true"></div>
@@ -67,5 +74,6 @@
       <button type="button" class="lightbox-next" aria-label="Next image">&#10095;</button>
     </dialog>
     <script src="scripts/lightbox.js" defer></script>
+    <script src="scripts/mischief.js" defer></script>
   </body>
 </html>

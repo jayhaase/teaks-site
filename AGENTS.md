@@ -43,10 +43,11 @@ commit it.
 assets) for reference only — it's listed in `.eleventyignore` and never
 gets built or published. Don't wire it into the site.
 
-`scripts/` holds the site's one piece of client-side JS
-(`lightbox.js`, passthrough-copied like `styles/` and `images/`). It's a
-plain browser script (no bundler, no framework) — `eslint.config.js` has
-a separate block scoped to `scripts/**/*.js` with browser globals instead
+`scripts/` holds the site's client-side JS (`lightbox.js`, `mischief.js`
+— passthrough-copied like `styles/` and `images/`). Each is a plain
+browser script (no bundler, no framework, both loaded via separate
+`<script defer>` tags in `layout.njk`) — `eslint.config.js` has a
+separate block scoped to `scripts/**/*.js` with browser globals instead
 of the root config's Node globals. Keep any future client JS in this
 folder and pattern for the same reason.
 
@@ -135,6 +136,30 @@ folder and pattern for the same reason.
   a visual check, since a few px of overflow is easy to miss by eye.
   Long unbreakable button/link text (e.g. an email address) needs its own
   fix — `.btn` has `overflow-wrap: anywhere` for this.
+- **A class-based `display` rule beats the `[hidden]` attribute's default
+  styling.** The browser's UA stylesheet sets `[hidden] { display: none }`,
+  but that's low specificity — `.doodle-toggle img { display: block; }`
+  (class + element) overrides it, so a `hidden` toadstool/frog image would
+  render anyway, stacked on top of its sibling. Fixed with a same-element,
+  higher-specificity rule: `.doodle-toggle img[hidden] { display: none; }`.
+  Same family of bug as the two entries above — if you toggle visibility
+  via the `hidden` attribute (rather than a class) anywhere, check the
+  element doesn't also have an unconditional `display` rule from a class
+  selector, and verify with `getComputedStyle(...).display`, not just
+  reading the `hidden` attribute back (it can be `true` while the element
+  is still visually `block`). Also: the local preview browser tab caches
+  `styles/style.css` aggressively — if a CSS fix doesn't seem to take
+  effect after editing + rebuilding, hard-reload with a cache-busting query
+  string before concluding the fix is wrong.
+- `role="button"` on a `<div>` (used for the mystery potion card) trips
+  html-validate's `prefer-native-element` rule, but a real `<button>`
+  can't legally contain block content like `<h3>`/`<p>` per the HTML5
+  content model (`element-permitted-content`) — the two rules directly
+  contradict for "clickable card with rich content," a legitimate and
+  ARIA-sanctioned pattern. `prefer-native-element` is turned off in
+  `.htmlvalidate.json` for this reason. Cards using this pattern need
+  `tabindex="0"` plus a JS `keydown` handler for Enter/Space — native
+  buttons get that for free, `role="button"` divs don't.
 
 ## CI/CD — don't weaken the safety gate
 
