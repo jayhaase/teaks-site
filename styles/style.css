@@ -107,6 +107,11 @@ a {
   display: flex;
   gap: 38px;
   overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-nav-links::-webkit-scrollbar {
+  display: none;
 }
 
 .site-nav-links a {
@@ -771,9 +776,7 @@ html.lightbox-open {
   }
 
   .site-nav-links {
-    gap: 20px;
-    min-width: 0;
-    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    display: none;
   }
 
   .hero {
