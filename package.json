@@ -30,7 +30,7 @@
     "@11ty/eleventy-img": "^6.0.4",
     "@eslint/js": "^10.0.1",
     "axe-core": "^4.12.1",
-    "eslint": "^10.6.0",
+    "eslint": "^10.7.0",
     "globals": "^17.7.0",
     "html-validate": "^11.5.5",
     "jsdom": "^29.1.1",
