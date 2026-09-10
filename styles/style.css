@@ -783,8 +783,64 @@ html.lightbox-open {
 }
 
 .shop-fab-icon {
-  width: 26px;
+  width: 34px;
   height: auto;
+}
+
+.shop-fab-tooltip {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: var(--bg-panel);
+  color: var(--cream);
+  border: 1px solid var(--divider);
+  border-radius: 4px;
+  padding: 7px 14px;
+  font: 600 12px / 1 var(--font-heading);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 35%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.shop-fab:hover .shop-fab-tooltip,
+.shop-fab:focus-visible .shop-fab-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Sparkles spawned near the shop FAB (see scripts/mischief.js) */
+
+@keyframes shop-fab-spark {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4) rotate(0deg);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(1) rotate(60deg);
+  }
+}
+
+.shop-fab-spark {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px;
+  background: url("../images/mischief/sparkle.svg") no-repeat center / contain;
+  pointer-events: none;
+  animation: shop-fab-spark 900ms ease-out forwards;
 }
 
 @media (width <= 520px) {
@@ -796,7 +852,17 @@ html.lightbox-open {
   }
 
   .shop-fab-icon {
-    width: 22px;
+    width: 28px;
+  }
+
+  .shop-fab-tooltip {
+    inset: auto auto calc(100% + 12px) 50%;
+    transform: translateX(-50%) translateY(6px);
+  }
+
+  .shop-fab:hover .shop-fab-tooltip,
+  .shop-fab:focus-visible .shop-fab-tooltip {
+    transform: translateX(-50%) translateY(0);
   }
 }
 
@@ -926,7 +992,8 @@ html.lightbox-open {
 @media (prefers-reduced-motion: reduce) {
   .sparkle,
   .doodle-toggle,
-  .shop-fab {
+  .shop-fab,
+  .shop-fab-spark {
     animation: none;
   }
 
@@ -936,7 +1003,8 @@ html.lightbox-open {
   .seal,
   .site-nav-logo,
   .footer-band p,
-  .shop-fab {
+  .shop-fab,
+  .shop-fab-tooltip {
     transition: none;
   }
 }

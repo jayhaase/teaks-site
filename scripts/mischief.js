@@ -44,4 +44,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
+
+  const shopFab = document.querySelector(".shop-fab");
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (shopFab && !prefersReducedMotion) {
+    const spawnSpark = () => {
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 16 + Math.random() * 14;
+      const spark = document.createElement("span");
+      spark.className = "shop-fab-spark";
+      spark.style.left = `${50 + Math.cos(angle) * 30}%`;
+      spark.style.top = `${50 + Math.sin(angle) * 30}%`;
+      spark.style.setProperty("--dx", `${Math.cos(angle) * distance}px`);
+      spark.style.setProperty("--dy", `${Math.sin(angle) * distance}px`);
+      spark.addEventListener("animationend", () => spark.remove());
+      shopFab.appendChild(spark);
+    };
+
+    const scheduleSpark = () => {
+      spawnSpark();
+      setTimeout(scheduleSpark, 1800 + Math.random() * 2400);
+    };
+
+    setTimeout(scheduleSpark, 1200 + Math.random() * 1800);
+  }
 });
