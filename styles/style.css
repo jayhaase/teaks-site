@@ -734,6 +734,72 @@ html.lightbox-open {
   color: var(--bg-deep);
 }
 
+/* Shop floating icon */
+
+@keyframes shop-fab-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(4deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+}
+
+.shop-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 60;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at 35% 30%,
+    #d9b45c,
+    var(--gold-darker) 70%
+  );
+  box-shadow: 0 4px 14px rgb(0 0 0 / 45%);
+  animation: shop-fab-bob 4s ease-in-out infinite;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s;
+}
+
+.shop-fab:hover,
+.shop-fab:focus-visible {
+  transform: rotate(-8deg) scale(1.1);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 50%);
+  animation-play-state: paused;
+}
+
+.shop-fab:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
+
+.shop-fab-icon {
+  width: 26px;
+  height: auto;
+}
+
+@media (width <= 520px) {
+  .shop-fab {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .shop-fab-icon {
+    width: 22px;
+  }
+}
+
 /* Find Teak */
 
 .find-teak-grid {
@@ -859,7 +925,8 @@ html.lightbox-open {
 
 @media (prefers-reduced-motion: reduce) {
   .sparkle,
-  .doodle-toggle {
+  .doodle-toggle,
+  .shop-fab {
     animation: none;
   }
 
@@ -868,7 +935,8 @@ html.lightbox-open {
   .potion-card,
   .seal,
   .site-nav-logo,
-  .footer-band p {
+  .footer-band p,
+  .shop-fab {
     transition: none;
   }
 }

@@ -63,9 +63,14 @@ section:
   "eyebrow": "Herein Recorded, the Apothecary of",
   "heroSubhead": "A tree faery, apprentice to a wandering alchemist...",
   "email": "hello@teaksapothecary.faerie",
+  "merchUrl": "https://teak-the-faery-shop.fourthwall.com/",
   "footerLine": "Thus concludes this ledger · herein sealed by Teak, apprentice fae"
 }
 ```
+
+`merchUrl` is the link used by the "Shop" nav item and the floating
+potion-bottle button in the corner of every page — update it here if the
+merch shop's address ever changes.
 
 ### Add or change photos
 
@@ -166,3 +171,10 @@ pnpm run build     # build the site into _site/
 - Dependabot — weekly dependency updates, with a 3-day cooldown so a
   newly published (and potentially compromised) package version has time
   to get caught before it's pulled in here
+
+## Credits
+
+- The floating shop-link icon (`images/mischief/potion-bottle.svg`) is the
+  "Drink Me" icon by [Lorc](https://lorcblog.blogspot.com), from
+  [game-icons.net](https://game-icons.net/), licensed under
+  [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
