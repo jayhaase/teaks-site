@@ -59,7 +59,19 @@
         </div>
       </header>
 
-      <main id="main">{{ content | safe }}</main>
+      <main id="main">
+        {{ content | safe }}
+        <a
+          class="shop-fab"
+          href="{{ site.merchUrl }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="See {{ site.characterName }}'s Shop"
+        >
+          <img src="images/mischief/potion-bottle.svg" class="shop-fab-icon" alt="">
+          <span class="shop-fab-tooltip" aria-hidden="true">See {{ site.characterName }}'s Shop</span>
+        </a>
+      </main>
 
       <footer class="footer-band">
         <p>{{ site.footerLine | safe }}</p>
@@ -67,17 +79,6 @@
 
       <div class="scroll-rod scroll-rod--bottom" aria-hidden="true"></div>
     </div>
-
-    <a
-      class="shop-fab"
-      href="{{ site.merchUrl }}"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="See {{ site.characterName }}'s Shop"
-    >
-      <img src="images/mischief/potion-bottle.svg" class="shop-fab-icon" alt="">
-      <span class="shop-fab-tooltip" aria-hidden="true">See {{ site.characterName }}'s Shop</span>
-    </a>
 
     <dialog id="lightbox" class="lightbox" aria-label="Gallery image viewer">
       <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
